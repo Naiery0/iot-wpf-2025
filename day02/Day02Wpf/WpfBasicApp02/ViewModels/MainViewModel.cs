@@ -1,48 +1,36 @@
-﻿using MySql.Data.MySqlClient;
-using System;
-using System.Collections.Generic;
+﻿using Caliburn.Micro;
+using MahApps.Metro.Controls.Dialogs;
+using MySql.Data.MySqlClient;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Data;
-using System.Linq;
-using System.Security.AccessControl;
-using System.Text;
-using System.Threading.Tasks;
+using System.Windows;
+using WpfBasicApp02.Models;
 
-using WpfBasicApp02.Model;
-
-namespace WpfBasicApp02.ViewModel
+namespace WpfBasicApp02.ViewModels
 {
-    // MainViewModel에 속하는 속성의 값이 바뀌면 이벤트 발생
-    
-
-    public class MainViewModel : INotifyPropertyChanged
+    class MainViewModel : Conductor<object>
     {
-        // 속성추가
-        // ObservableCollection : 값의 변화를 감지할 수 있음
-        public ObservableCollection<Book> Books { get; set; }
-        // List<KeyValuePair<string, string>> divisions 의 변형
+        private IDialogCoordinator _dialogCoordinator;
+
         public ObservableCollection<KeyValuePair<string, string>> Divisions { get; set; }
-        // 선택된 값에 대한 멤버변수 
+        public ObservableCollection<Book> Books { get; set; }
         private Book _selectedBook;
-        // 선택된 값에 대한 속성
+
         public Book SelectedBook
         {
-            // get { return _selectedBook; }
-            get => _selectedBook; // 람다식
+            get { return _selectedBook; }
             set
             {
                 _selectedBook = value;
-                // 값이 변경된 것을 알아차리도록 해야 함
-
-                OnPropertyChanged(nameof(SelectedBook));
+                NotifyOfPropertyChange(() => SelectedBook);
             }
         }
 
 
-
         public MainViewModel()
         {
+            _dialogCoordinator = new DialogCoordinator();
+
             LoadControlFromDb();
             LoadGridFromDb();
         }
@@ -79,7 +67,7 @@ namespace WpfBasicApp02.ViewModel
 
                 }
                 Divisions = divisions;
-                OnPropertyChanged(nameof(divisions));
+                NotifyOfPropertyChange(() => Divisions);
             }
         }
 
@@ -126,14 +114,12 @@ namespace WpfBasicApp02.ViewModel
                 }
             }
             Books = books;
-            OnPropertyChanged(nameof(books));
+            NotifyOfPropertyChange(() => Books);
         }
 
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected void OnPropertyChanged(string name)
+        public async void DoAction()
         {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
+            //await _dialogCoordinator.ShowMessageAsync(this, "데이터 로드", "Load");
         }
     }
 }
