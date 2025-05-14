@@ -42,28 +42,7 @@ namespace WpfBookRentalShop01.ModelViews
             get => _books;
             set => SetProperty(ref _books, value);
         }
-        
-        // 장르 콤보박스 구현을 위해 (미완)
-        //private List<string> genres = new List<string>();
-        //private List<string> distinctGenres = new List<string>();
 
-        //private async void LoadGenre()
-        //{
-        //    string query = @"SELECT division ,names
-        //                       FROM divtbl";
-        //    ObservableCollection<Genre> genres = new ObservableCollection<Genre>();
-        //    using (MySqlConnection conn = new MySqlConnection(Common.CONNSTR))
-        //    {
-        //        conn.Open();
-        //        MySqlCommand cmd = new MySqlCommand(query, conn);
-        //        MySqlDataReader reader = cmd.ExecuteReader();
-
-        //        while (reader.Read()) { 
-        //            var names = reader.GetString("names");
-        //            genres.Add(names);
-        //        }
-        //    }
-        //}
 
         private async void LoadGridFromDb()
         {
