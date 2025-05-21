@@ -528,7 +528,10 @@ IoT 개발자 WPF 학습리포지토리 2025
 - MQTT 센서 데이터로 동작용 변수 값 할당
 - 실행화면 
 
-    https://github.com/user-attachments/assets/35f91d46-3197-4530-937d-2d7e0854499c
+
+
+    https://github.com/user-attachments/assets/a2332b3c-597f-473a-92d3-d7efac546c65
+
 
     스마트홈 조작영상
 
