@@ -538,5 +538,3 @@ IoT 개발자 WPF 학습리포지토리 2025
     https://github.com/user-attachments/assets/f41edd05-841a-42a9-8d5b-05afa402aa9b
 
     스마트홈 모니터링앱 동작영상
-
-### Github 대문 꾸미기
